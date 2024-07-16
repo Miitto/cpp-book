@@ -14,6 +14,7 @@ const setLayout = () => {
 export default defineConfig({
   integrations: [mdx()],
   site: 'https://Miitto.github.io',
+  trailingSlash: "always",
   base: 'cpp-book',
   markdown: {
     remarkPlugins: [setLayout, [codeExtra, {

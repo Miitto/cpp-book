@@ -205,4 +205,4 @@ The days left in the week are: Wednesday, Thursday, Friday, Saturday, Sunday,
 
 ## Loops
 
-Since loops are slightly more complex, they have been given their own [page](./loops).
+Since loops are slightly more complex, they have been given their own [page](../loops/).

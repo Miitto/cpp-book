@@ -19,12 +19,12 @@ A condition is an expression that evaluates to a boolean value (`true` or `false
 Note that both `true` and `false` themselves can be used as conditions.
 
 ## Declaration
-Can be found [here](./variables#declaring-variables).
+Can be found [here](../variables/#declaring-variables).
 
 ## Definition
-Can be found [here](./variables#defining-variables).
+Can be found [here](../variables/#defining-variables).
 
-Declaration vs Definition is [here](./variables#declaration-vs-definition).
+Declaration vs Definition is [here](../variables/#declaration-vs-definition).
 
 ## Function
 TODO
