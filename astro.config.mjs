@@ -13,6 +13,8 @@ const setLayout = () => {
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx()],
+  site: 'https://Miitto.github.io',
+  base: 'cpp-book',
   markdown: {
     remarkPlugins: [setLayout, [codeExtra, {
     // Add a copy button to code blocks
