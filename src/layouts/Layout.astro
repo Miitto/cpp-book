@@ -55,6 +55,8 @@ const { url } = Astro;
 		position: absolute;
 		top: 10px;
 		left: 10px;
+		padding: 0.25rem 0.5rem;
+		border-bottom: 1px solid #5555;
 	}
 
 	@media screen and (max-width: 800px) {
@@ -78,6 +80,16 @@ const { url } = Astro;
 			rgb(var(--accent-light)) 30%,
 			white 60%
 		);
+
+		--button: 19, 21, 26;
+		--button-hover: 30, 32, 40;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--button: 30, 32, 40;
+			--button-hover: 19, 21, 26;
+		}
 	}
 
 	h1:target,
@@ -150,7 +162,7 @@ const { url } = Astro;
 
 	code:not(pre code) {
 		background-color: #e6e5e5;
-		padding: 0.2rem;
+		padding: 0.2rem 0.3rem;
 		border-radius: 3px;
 	}
 
@@ -190,7 +202,7 @@ const { url } = Astro;
 		top: 10px;
 		right: 10px;
 		transition: opacity 0.2s;
-		background-color: #13151a;
+		background-color: rgb(19, 21, 26);
 		border-radius: 7px;
 		border: none;
 		box-shadow:
@@ -199,7 +211,7 @@ const { url } = Astro;
 	}
 
 	.copy-button:hover {
-		background-color: #1e2028;
+		background-color: rgb(30, 32, 40);
 	}
 
 	.copy-button:active {
