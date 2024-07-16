@@ -4,22 +4,63 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const { url } = Astro;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Astro description"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/favicon.svg"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
 		<title>{title}</title>
 	</head>
 	<body>
+		{url.pathname != "/" ? <a href="/"> &lt;-- Back to index </a> : ""}
 		<slot />
 	</body>
 </html>
+
+<style>
+	body {
+		padding: 0.5rem;
+		margin-top: 10px;
+	}
+
+	body > a {
+		text-decoration: none;
+		color: rgb(var(--accent));
+		position: absolute;
+		top: 10px;
+		left: 10px;
+	}
+
+	@media screen and (max-width: 800px) {
+		body {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	body div:first-child {
+		max-width: fit-content;
+	}
+</style>
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
@@ -32,11 +73,148 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
+
+	h1:target,
+	h2:target,
+	h3:target,
+	h4:target,
+	h5:target,
+	h6:target {
+		color: rgb(var(--accent));
+	}
+
+	table {
+		border: 1px solid #5555;
+	}
+
+	thead {
+		background-color: #f5f5f5;
+	}
+
+	tr:nth-child(even) {
+		background-color: #f5f5f5;
+	}
+
+	td,
+	th {
+		padding: 0.25rem;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		table {
+			border: 1px solid #999;
+		}
+
+		thead {
+			background-color: #333;
+		}
+
+		tr:nth-child(even) {
+			background-color: #222;
+		}
+	}
+
+	ol {
+		counter-reset: item;
+	}
+
+	ol li {
+		display: block;
+	}
+
+	ol li:before {
+		content: counters(item, ".") " ";
+		counter-increment: item;
+	}
+
+	a {
+		color: rgb(var(--accent));
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: rgb(var(--accent-dark));
+	}
+
+	@media (prefers-color-scheme: dark) {
+		a:visited {
+			color: rgb(var(--accent-light));
+		}
+	}
+
+	code:not(pre code) {
+		background-color: #e6e5e5;
+		padding: 0.2rem;
+		border-radius: 3px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		code:not(pre code) {
+			background-color: #22232b;
+		}
+	}
+
+	pre {
+		padding: 0.5rem 0.75rem;
+	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		background-color: #fcfcfc;
+		color: black;
 	}
+
+	.code-extra {
+		position: relative;
+	}
+
+	.code-extra > button {
+		opacity: 0;
+	}
+
+	.code-extra:hover > button {
+		opacity: 1;
+	}
+
+	.copy-button {
+		padding: 0.25rem;
+		padding-right: 0.2rem;
+		width: fit-content;
+		height: fit-content;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		transition: opacity 0.2s;
+		background-color: #13151a;
+		border-radius: 7px;
+		border: none;
+		box-shadow:
+			2px 2px 3px black,
+			-2px -2px 3px #4e4e4e;
+	}
+
+	.copy-button:hover {
+		background-color: #1e2028;
+	}
+
+	.copy-button:active {
+		box-shadow:
+			2px 2px 3px black inset,
+			-2px -2px 3px #4e4e4e inset;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html {
+			background: #13151a;
+			color: white;
+		}
+	}
+
+	blockquote {
+		border-left: 4px solid rgb(var(--accent));
+		padding-left: 1.5rem;
+		margin-inline: 0;
+	}
+
 	code {
 		font-family:
 			Menlo,
