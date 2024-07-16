@@ -7,6 +7,6 @@
     3. [Arrays](./arrays)
     4. [Control Flow](./controlflow)
     5. [Loops](./loops)
-
+    6. [Functions](./functions) TODO
 2. Memory Management
-    4. [Pointers](/pointers)
+    1. [Pointers](/pointers)

@@ -32,7 +32,13 @@ const { url } = Astro;
 		<title>{title}</title>
 	</head>
 	<body>
-		{url.pathname != "/" ? <a href="/"> &lt;-- Back to index </a> : ""}
+		{
+			url.pathname == "/" || url.pathname == "/cpp-book/" ? (
+				""
+			) : (
+				<a href="/cpp-book"> &lt;-- Back to index </a>
+			)
+		}
 		<slot />
 	</body>
 </html>
