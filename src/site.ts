@@ -50,7 +50,7 @@ const sitemap: Sitemap = [
             },
             {
                 name: "Data Types",
-                base: "datatypes",
+                base: "data-types",
             },
             {
                 name: "Operators",
@@ -80,7 +80,7 @@ const sitemap: Sitemap = [
         pages: [
             {
                 name: "Stack vs Heap",
-                base: "stackheap",
+                base: "stack-heap",
             },
             {
                 name: "Pointers",
@@ -88,6 +88,66 @@ const sitemap: Sitemap = [
             },
         ],
     },
+    {
+        name: "The Standard Library",
+        base: "std",
+        pages: [
+            {
+                name: "Console Input/Output",
+                base: "io",
+            },
+            {
+                name: "Strings",
+                base: "strings",
+            },
+            {
+                name: "Vectors",
+                base: "vectors",
+            },
+            {
+                name: "Maps TODO",
+                base: "maps",
+            },
+            {
+                name: "Sets TODO",
+                base: "sets",
+            },
+            {
+                name: "Iterators",
+                base: "iterators",
+            },
+            {
+                name: "Smart Pointers",
+                base: "smart-pointers",
+            },
+        ],
+    },
+    // {
+    //     name: "Object Oriented Programming",
+    //     base: "oop",
+    //     pages: [
+    //         {
+    //             name: "Classes",
+    //             base: "classes",
+    //         },
+    //         {
+    //             name: "Inheritance",
+    //             base: "inheritance",
+    //         },
+    //         {
+    //             name: "Polymorphism",
+    //             base: "polymorphism",
+    //         },
+    //         {
+    //             name: "Interfaces",
+    //             base: "interfaces",
+    //         },
+    //         {
+    //             name: "Templates",
+    //             base: "templates",
+    //         },
+    //     ],
+    // },
 ];
 
 export function getSitemap(): Site {
