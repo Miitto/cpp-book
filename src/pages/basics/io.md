@@ -6,14 +6,29 @@ title: Input Output
 
 ## Introduction
 
-Throughout this chapter, we will not be using the `using namespace std;` directive. This will help to show where each object comes from, and will help you to get in the habit, as it helps to avoid naming conflicts in larger programs.
+Console input and output are the easiest methods to implement. Both console input `cin` and console output `cout` are part of the standard library `iostream`. The `iostream` library is included in the C++ standard library, so you don't need to install any additional libraries to use it.
+
+## A note on namespaces
+
+Both `cin` and `cout` are part of the `std` namespace, to access members of a namespace you use the `::` operator (`namespace::member`), so you need to use `std::cin` and `std::cout` to access them. You can also use the `using` directive to avoid having to use the namespace prefix (`using namespace namespaceName`, e.g. `using namespace std`), but this is generally discouraged as it can lead to naming conflicts, especially with large namespaces such as `std`.
+
+## Including the iostream header file
+
+To use `cin` and `cout`, you need to include the `iostream` header file. This file contains the declarations for the `cin` and `cout` objects, as well as other input and output objects. Imports are located at the top of the file, and use the `#include` directive. When including a header file, you should use angle brackets `<>` for standard library headers, and double quotes `""` for user-defined headers. GCC has a more in depth explanation of the difference between the two [here](https://gcc.gnu.org/onlinedocs/cpp/Search-Path.html).
+
+```cpp
+#include <iostream> // include the iostream header file
+
+int main() {
+    //...
+```
 
 ## Output
 
-To output data to the console, you can use the `std::cout` object. This object is defined in the `iostream` header file. Here is an example of how to use `std::cout`:
+The quickest way to check that your program is working is to output a message to the console.
 
 ```cpp
-#include <iostream> // include the iostream header file, which defines std::cout
+#include <iostream>
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
@@ -97,11 +112,11 @@ An entire line can be read using the `std::getline` function:
 
 int main() {
     std::string line;
-    std::cout << "Enter a line of text: ";
+    std::cout << "What is your name? ";
     std::getline(std::cin, line);
-    std::cout << "You entered: " << line << std::endl;
+    std::cout << "Hello " << line << std::endl; // Note the space after Hello, this is to separate the name from the rest of the output. Chaining << does not add spaces.
     return 0;
 }
 ```
 
-This example use `std::string` from the next chapter, but it is included here for completeness.
+This example use `std::string` which we have not covered yet, but it is included here for completeness.

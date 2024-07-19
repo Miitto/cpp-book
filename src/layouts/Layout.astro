@@ -47,12 +47,18 @@ const neighbors = getNeighbors(url.pathname);
                 url.pathname == "/" || url.pathname == "/cpp-book/" ? (
                     <span />
                 ) : (
-                    <a href={neighbors.prev?.link}>
+                    <a
+                        href={neighbors.prev?.link}
+                        id="prev"
+                    >
                         &lt;-- {neighbors.prev?.name}
                     </a>
                 )
             }
-            <a href={neighbors.next?.link}>
+            <a
+                href={neighbors.next?.link}
+                id="next"
+            >
                 {neighbors.next?.name} --&gt;
             </a>
         </div>

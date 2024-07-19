@@ -6,6 +6,8 @@ title: Iterators
 
 [Reference](https://en.cppreference.com/w/cpp/iterator)
 
+An iterator is not a control structure, but they are used extensively in loops, so it made sense to co-locate them.
+
 ## Introduction
 
 An iterator is an object that allows you to traverse the elements of a container. Iterators are defined in the `iterator` header file. There are different types of iterators, each with its own set of capabilities.

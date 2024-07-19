@@ -9,7 +9,9 @@ title: Strings
 
 ## Introduction
 
-A string is a sequence of characters. In C++, strings are represented by the `std::string` class, which is defined in the `string` header file. Here is an example of how to use `std::string`:
+A string is a sequence of characters. In C a string is an array of `char` terminated by a null character `'\0'`. This can easily lead to buffer overflows and other security vulnerabilities.
+In C++, while you can still use C-style strings, the standard library provides a safer and more convenient alternative with the `string` class. The `string` class is part of the `std` namespace and is defined in the `string` header file.
+`string` objects are more flexible and easier to use than C-style strings, as they automatically manage memory and provide a wide range of useful methods for manipulating strings.
 
 ```cpp
 #include <iostream>
@@ -24,22 +26,32 @@ int main() {
 
 In this example, we are creating a `std::string` object `s` and initializing it with the value `"Hello, world!"`. We then use `std::cout` to print the value of `s` to the console.
 
-You can concatenate strings using the `+` operator:
+## Starting the project.
+
+Finally, we have enough base knowledge to start the project properly. We will start by taking the name for a user.
+
+We will be asking the user for their first and last name independently. We will then concatenate the two strings to store them as one.
 
 ```cpp
 #include <iostream>
 #include <string>
 
 int main() {
-    std::string s1 = "Hello";
-    std::string s2 = "world!";
-    std::string s = s1 + ", " + s2;
-    std::cout << s << std::endl; // prints "Hello, world!"
+    std::string first;
+    std::string last;
+    std::cout << "Enter your first name: ";
+    std::cin >> first;
+    std::cout << "Enter your last name: ";
+    std::cin >> last;
+
+    std::string name = first + " " + last; // We can use the + operator to concatenate strings
     return 0;
 }
 ```
 
-You can also compare strings using the `==` operator:
+The rest of this chapter will cover various methods and operations you can perform on strings, we will use these later in the project. The examples will likely use things we have not covered yet, but they are here for reference.
+
+We can compare strings using the `==` operator:
 
 ```cpp
 #include <iostream>

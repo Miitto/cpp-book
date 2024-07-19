@@ -4,6 +4,8 @@ title: Terminology
 
 # Terminology
 
+Before we start, it is important to clarify some basic terminology that is used in programming. Understanding these terms will help you grasp the concepts more easily, and simplify the learning process.
+
 ## Expression
 
 An expression is a combination of values, variables, operators, and functions that are evaluated to produce a result. For example, `x + 5` is an expression that adds the value of `x` to `5`.
@@ -19,12 +21,11 @@ A condition is an expression that evaluates to a boolean value (`true` or `false
 Note that both `true` and `false` themselves can be used as conditions.
 
 ## Declaration
+
 Can be found [here](../variables/#declaring-variables).
 
 ## Definition
+
 Can be found [here](../variables/#defining-variables).
 
 Declaration vs Definition is [here](../variables/#declaration-vs-definition).
-
-## Function
-TODO

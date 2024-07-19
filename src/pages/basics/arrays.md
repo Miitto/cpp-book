@@ -26,6 +26,7 @@ int numbers[] = {1, 2, 3, 4, 5};
 ```
 
 If you want to initialize all the elements of the array to their default values (0 for integers), you can use an empty initializer list:
+
 ```cpp
 int numbers[5] = { }; // All 5 elements will be initialized to 0
 ```
@@ -49,9 +50,12 @@ int firstElement = numbers[0]; // firstElement = 1
 
 // Accessing the third element
 int thirdElement = numbers[2]; // thirdElement = 3
+
+// Attempting to access an element outside the bounds of the array
+int invalidElement = numbers[5]; // This will cause undefined behavior, and likely a crash
 ```
 
-C++ will allow you to access elements outside the bounds of the array, but this can lead to undefined behavior (probably a crash). It is important to ensure that you are accessing valid indices when working with arrays.
+C++ will allow you to access elements outside the bounds of the array, but this can lead to undefined behavior. It is important to ensure that you are accessing valid indices when working with arrays.
 
 ## Modifying Elements of an Array
 
@@ -118,6 +122,7 @@ int size = sizeof(numbers) / sizeof(numbers[0]); // size = 5
 
 > ℹ️
 > The `sizeof` operator returns the size of the array in bytes, not the number of elements in the array. To get the number of elements, you need to divide the size of the array by the size of the first element. If you know that the array is of a specific type, you can use that type instead of `numbers[0]`. For example, if you know that `numbers` is an array of integers, you can use `sizeof(int)` instead of `sizeof(numbers[0])`.
+>
 > ```cpp
 > int size = sizeof(numbers) / sizeof(int); // size = 5
 > ```

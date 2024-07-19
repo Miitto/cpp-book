@@ -32,13 +32,12 @@ int a, b, c;
 > ℹ️
 > There are many different conventions to name variables. The most important thing is to be consistent with the naming convention you choose. In C++ the convention is to use `camelCase` for variable names, PascalCase for class names, and `UPPER_CASE` for constants. Some languages, such as Python, use `snake_case` for variables. Below is a table of naming conventions.
 
-| Name | Example | Explanation |
-|------------|---------|-------|
-| camelCase | `myVariable` | Start lowercase, then capitalize subsequent words. |
-| PascalCase | `MyClass` | Start uppercase, then capitalize subsequent words. |
-| UPPER_CASE | `MY_CONSTANT` | All uppercase with underscores separating words. |
-| snake_case | `my_variable` | All lowercase with underscores separating words. |
-
+| Name       | Example       | Explanation                                        |
+| ---------- | ------------- | -------------------------------------------------- |
+| camelCase  | `myVariable`  | Start lowercase, then capitalize subsequent words. |
+| PascalCase | `MyClass`     | Start uppercase, then capitalize subsequent words. |
+| UPPER_CASE | `MY_CONSTANT` | All uppercase with underscores separating words.   |
+| snake_case | `my_variable` | All lowercase with underscores separating words.   |
 
 ## Defining Variables
 
@@ -81,36 +80,13 @@ int main() {
     }
 
     // Cannot access nestedVariable here, as since the braces have closed, the variable is out of scope.
-    
+
     return 0;
 }
 ```
 
 In the example above, a scope is created manually using curly braces `{}`. Scopes are more commonly created by functions, loops, and conditional statements. Declaration is a useful tool to prevent a variable from being lost when a scope ends.
 The example below shows a variable being declared outside of a scope, and then defined inside of a scope. This is used commonly in loops to persist counters and the like.
-
-```cpp
-int main() {
-    int numbers[10] = { };
-    for (int i = 0; i < 10; i++) { // Populate the array with alternating 0s and 1s. Loops will be properly covered later.
-        numbers[i] = i % 2;
-    }
-
-    int numberOfOnes = 0; // Declaration / Definition outside of the loop scope
-
-    for (int i = 0; i < 10; i++) {
-        bool isOne = numbers[i] == 1; // isOne is local to the loop scope, and thus will be dropped and then redefined each iteration.
-        if (isOne) {
-            numberOfOnes++;
-        }
-    }
-
-    // numberOfOnes is still accessible here, as it was declared outside of the loop scope.
-
-    return 0;
-}
-```
-}
 
 ## Constants
 

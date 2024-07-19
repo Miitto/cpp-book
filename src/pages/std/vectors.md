@@ -8,25 +8,49 @@ title: Vectors
 
 ## Introduction
 
-A vector is a sequence of elements, much like an array. However, vectors are dynamic, meaning that their size can change at runtime. Vectors are defined in the `vector` header file. Here is an example of how to use `std::vector`:
+With our current knowledge, we can create arrays to store a fixed number of elements. However, arrays have some limitations. For instance, if we want to store multiple people's names, we would need to know the number of people in advance. If we don't know the number of people, we would need to create an array with a large number of elements to accommodate all possible names, which would be wasteful. We could also create a dynamic array using the `new` operator, but we would need to manage the memory ourselves, and recreate the array if we need to add more elements. This is where vectors come in.
+
+A vector is a sequence of elements, much like an array. However, vectors are dynamic, meaning that their size can change at runtime. Vectors are defined in the `vector` header file.
+
+We will be using a vector over an array in most cases, as vectors are more flexible and provide additional functionality. Vectors are part of the C++ Standard Library and are defined in the `std` namespace.
+
+Now we can use the vector to store multiple people's names without knowing the number of people in advance. We can add or remove names as needed, and the vector will automatically resize itself.
 
 ```cpp
 #include <iostream>
 #include <vector>
 
 int main() {
-    std::vector<int> v = {1, 2, 3, 4, 5};
-    for (int i = 0; i < v.size(); i++) {
-        std::cout << v[i] << " ";
-    }
-    std::cout << std::endl;
+    std::vector<std::string> names = {};
+    std::cout << "Enter first name: ";
+    std::string first;
+    std::cin >> first;
+    std::cout << "Enter last name: ";
+    std::string last;
+    std::cin >> last;
+
+    names.push_back(first + " " + last);
+
+    std::cout << "Enter first name: ";
+    std::string first;
+    std::cin >> first;
+    std::cout << "Enter last name: ";
+    std::string last;
+    std::cin >> last;
+
+    names.push_back(first + " " + last);
+
     return 0;
 }
 ```
 
-In this example, we are creating a `std::vector` object `v` and initializing it with the values `{1, 2, 3, 4, 5}`. We then use a `for` loop to iterate over the elements of the vector and print them to the console. This will output `1 2 3 4 5`.
+The vector now contains two peoples names. This code is rather messy, and we will clean it up with loops and functions later.
 
-The `size` method returns the number of elements in the vector. You can also use the `empty` method to check if the vector is empty.
+Again, the below examples will likely use things we have not covered yet, but they are here for future reference.
+
+## Checking the Size
+
+You can use the `empty` method to check if the vector is empty.
 
 ```cpp
 #include <iostream>
@@ -42,6 +66,8 @@ int main() {
     return 0;
 }
 ```
+
+`size` returns the number of elements in the vector. If the vector is empty, `size` will return 0.
 
 ## Creating Vectors
 

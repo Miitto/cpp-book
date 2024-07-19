@@ -1,8 +1,12 @@
 ---
-title: Control Flow
+title: Conditions
 ---
 
-# Control Flow
+# Conditions
+
+## Introduction
+
+Control flow is a foundational concept in programming. It allows you to execute different blocks of code based on certain conditions. In C++, you can use control structures such as `if`, `else`, `else if`, and `switch` to control the flow of your program. These control structures are used to make decisions and execute code based on those decisions.
 
 ## IF Statement
 
@@ -14,22 +18,44 @@ if (condition) {
 }
 ```
 
-Here is an example of using the `if` statement to check if a number is positive:
+We can now use add in a check to ensure that any name given is not empty:
 
 ```cpp
 #include <iostream>
-using namespace std;
+#include <string>
 
 int main() {
-    int number = 10;
+    std::string first;
+    std::cout << "Enter your first name: ";
+    std::cin >> first;
 
-    if (number > 0) {
-        cout << "The number is positive." << endl;
+    if (first.empty()) {
+        std::cout << "You did not enter a name." << std::endl;
+        return 1; // Return an error code, and since this is in main, it will exit the program.
     }
+
+    std::string last;
+    std::cout << "Enter your last name: ";
+    std::cin >> last;
+
+    if (last.empty()) {
+        std::cout << "You did not enter a last name." << std::endl;
+        return 1;
+    }
+
+    std::string name = first + " " + last;
 
     return 0;
 }
 ```
+
+This code will now check if the first or last name is empty, and if so, it will print an error message and exit the program.
+
+The condition in the `if` statement can be any expression that evaluates to a boolean value (`true` or `false`). The condition can be a comparison, a logical operation, or a function that returns a boolean value.
+
+We will continue to build on this code as we add loops in the next chapter.
+
+### Else
 
 You can use `else` to execute a block of code if the condition is false. The syntax for the `if-else` statement is as follows:
 
@@ -59,6 +85,8 @@ int main() {
     return 0;
 }
 ```
+
+### Else If
 
 You can use `else if` to check multiple conditions. The syntax for the `if-else if-else` statement is as follows:
 
@@ -153,7 +181,11 @@ int main() {
 
 The expression for a switch statement can be of type `int`, `char`, or `enum`. The case values must be constant expressions, and the `break` statement is used to exit the switch statement.
 
-If you omit the `break` statement, the code will continue to execute until the end of the switch statement or until a `break` statement is encountered. This is called "falling through" and is sometimes used intentionally.
+The `default` case is optional and is executed if none of the case values match the expression. The `default` case is similar to the `else` statement in an `if-else` statement.
+
+### Fall-Through
+
+In C++, the `break` statement is used to exit the switch statement. If the `break` statement is omitted, the code will "fall through" to the next case. This can be useful if you want to execute the same code for multiple cases. Here is an example of using fall-through in a switch statement:
 
 ```cpp
 #include <iostream>
@@ -202,7 +234,3 @@ The above code will output:
 ```plaintext
 The days left in the week are: Wednesday, Thursday, Friday, Saturday, Sunday,
 ```
-
-## Loops
-
-Since loops are slightly more complex, they have been given their own [page](../loops/).

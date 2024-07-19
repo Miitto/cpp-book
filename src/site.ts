@@ -45,6 +45,10 @@ const sitemap: Sitemap = [
                 base: "simple",
             },
             {
+                name: "Console Input/Output",
+                base: "io",
+            },
+            {
                 name: "Variables",
                 base: "variables",
             },
@@ -60,42 +64,12 @@ const sitemap: Sitemap = [
                 name: "Arrays",
                 base: "arrays",
             },
-            {
-                name: "Control Structures",
-                base: "control-structures",
-            },
-            {
-                name: "Loops",
-                base: "loops",
-            },
-            {
-                name: "Functions",
-                base: "functions",
-            },
         ],
     },
     {
-        name: "Memory Management",
-        base: "memory",
-        pages: [
-            {
-                name: "Stack vs Heap",
-                base: "stack-heap",
-            },
-            {
-                name: "Pointers",
-                base: "pointers",
-            },
-        ],
-    },
-    {
-        name: "The Standard Library",
+        name: "The Standard Library Datatypes",
         base: "std",
         pages: [
-            {
-                name: "Console Input/Output",
-                base: "io",
-            },
             {
                 name: "Strings",
                 base: "strings",
@@ -112,9 +86,37 @@ const sitemap: Sitemap = [
                 name: "Sets TODO",
                 base: "sets",
             },
+        ],
+    },
+    {
+        name: "Control Structures",
+        base: "control-structures",
+        pages: [
+            {
+                name: "Conditions",
+                base: "conditions",
+            },
+            {
+                name: "Loops",
+                base: "loops",
+            },
             {
                 name: "Iterators",
                 base: "iterators",
+            },
+        ],
+    },
+    {
+        name: "Memory Management",
+        base: "memory",
+        pages: [
+            {
+                name: "Stack vs Heap",
+                base: "stack-heap",
+            },
+            {
+                name: "Pointers",
+                base: "pointers",
             },
             {
                 name: "Smart Pointers",
@@ -122,32 +124,50 @@ const sitemap: Sitemap = [
             },
         ],
     },
-    // {
-    //     name: "Object Oriented Programming",
-    //     base: "oop",
-    //     pages: [
-    //         {
-    //             name: "Classes",
-    //             base: "classes",
-    //         },
-    //         {
-    //             name: "Inheritance",
-    //             base: "inheritance",
-    //         },
-    //         {
-    //             name: "Polymorphism",
-    //             base: "polymorphism",
-    //         },
-    //         {
-    //             name: "Interfaces",
-    //             base: "interfaces",
-    //         },
-    //         {
-    //             name: "Templates",
-    //             base: "templates",
-    //         },
-    //     ],
-    // },
+    {
+        name: "Functions",
+        base: "functions",
+        pages: [
+            {
+                name: "Function Basics",
+                base: "basics",
+            },
+            {
+                name: "Function Overloading",
+                base: "overloading",
+            },
+            {
+                name: "First Order Functions",
+                base: "first-order",
+            },
+        ],
+    },
+    {
+        name: "Object Oriented Programming",
+        base: "oop",
+        pages: [
+            {
+                name: "Classes",
+                base: "classes",
+            },
+            {
+                name: "Inheritance",
+                base: "inheritance",
+            },
+            {
+                name: "Polymorphism",
+                base: "polymorphism",
+            },
+            {
+                name: "Interfaces",
+                base: "interfaces",
+            },
+            {
+                name: "Templates",
+                base: "templates",
+            },
+        ],
+    },
 ];
 
 export function getSitemap(): Site {

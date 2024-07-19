@@ -4,6 +4,10 @@ title: Pointers
 
 # Pointers
 
+## Introduction
+
+This chapter contains a lot of technical information about pointers. While they will likely be confusing to start with, and you may not understand why you would use them, you will start to pick them up when we start to work with functions and classes. If you come back to this chapter later, you may find it easier to understand. I would not recommend skipping this chapter, instead come back and read it again later.
+
 ## What is a Pointer?
 
 A pointer is a variable that stores the memory address of another variable. This allows you to indirectly access the value of a variable by using the pointer to access the memory location where the variable is stored. Pointers are a powerful feature of C++ that allow you to work with memory directly, and are used extensively in many advanced programming techniques. They are also a common source of bugs, so it is important to understand how they work.
@@ -89,6 +93,7 @@ This works due to how arrays work. Since an array is a contiguous block of memor
 
 > ℹ️
 > Since indexing an array uses pointer arithmetic, you can index into an array by doing:
+
 ```cpp
 int numbers[] = {1, 2, 3, 4, 5};
 int index = 2;
@@ -121,4 +126,4 @@ if (ptr != nullptr) {
 ```
 
 > ⚠️  
-> This does not mean that the pointer is valid, this only checks that the pointer has not been *marked* as invalid. It is still possible that the pointer points to an invalid memory address. A pointer will not be automatically set to `nullptr` when it is deleted, and the memory may have been freed from a different pointer, if there are multiple pointers for the same memory space.
+> This does not mean that the pointer is valid, this only checks that the pointer has not been _marked_ as invalid. It is still possible that the pointer points to an invalid memory address. A pointer will not be automatically set to `nullptr` when it is deleted, and the memory may have been freed from a different pointer, if there are multiple pointers for the same memory space.
