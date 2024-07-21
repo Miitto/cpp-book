@@ -60,10 +60,6 @@ const sitemap: Sitemap = [
                 name: "Operators",
                 base: "operators",
             },
-            {
-                name: "Arrays",
-                base: "arrays",
-            },
         ],
     },
     {
@@ -122,6 +118,10 @@ const sitemap: Sitemap = [
                 name: "Smart Pointers",
                 base: "smart-pointers",
             },
+            {
+                name: "Arrays",
+                base: "arrays",
+            },
         ],
     },
     {
@@ -143,12 +143,34 @@ const sitemap: Sitemap = [
         ],
     },
     {
+        name: "Code Splitting",
+        base: "files",
+        pages: [
+            {
+                name: "Splitting Code",
+                base: "splitting",
+            },
+            {
+                name: "Header Files",
+                base: "headers",
+            },
+        ],
+    },
+    {
         name: "Object Oriented Programming",
         base: "oop",
         pages: [
             {
                 name: "Classes",
                 base: "classes",
+            },
+            {
+                name: "Class Header Files",
+                base: "headers",
+            },
+            {
+                name: "Destructors",
+                base: "destructors",
             },
             {
                 name: "Inheritance",

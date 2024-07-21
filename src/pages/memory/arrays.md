@@ -6,7 +6,7 @@ title: Arrays
 
 ## What is an Array?
 
-An array is a collection of elements of the same type, stored in contiguous memory locations. The elements are accessed by their index, which is an integer value that represents the position of the element in the array. The index of the first element is 0, and the index of the last element is the size of the array minus one.
+An array is a collection of elements of the same type, stored in contiguous memory locations. The elements are accessed by their index, which is an integer value that represents the position of the element in the array. The index of the first element is 0, and the index of the last element is the size of the array minus one. This is an inbuilt data structure in C++ that has similar capabilities to the vector in the standard library, however, it is less flexible and more error-prone due to the fact you must manage the memory yourself. They do not have any methods, as they are not objects. For instance, to emulate the `push_back` method of a vector, you would need to create a new array with a larger size, copy the elements of the old array into the new array, and then add the new element. This is why vectors are generally preferred over arrays.
 
 ## Declaring an Array
 
@@ -126,3 +126,35 @@ int size = sizeof(numbers) / sizeof(numbers[0]); // size = 5
 > ```cpp
 > int size = sizeof(numbers) / sizeof(int); // size = 5
 > ```
+
+## Character Arrays
+
+Character arrays are a special case of arrays that are used to store strings. In C, strings are stored as arrays of characters, terminated by a null character `'\0'`. This null character is used to mark the end of the string.
+
+```cpp
+char str[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+```
+
+In C++, you can use string literals to initialize character arrays:
+
+```cpp
+char str[] = "Hello"; // A string literal will automatically include the null terminator
+```
+
+You can access and modify individual characters in a character array using the index of the character.
+
+```cpp
+char str[] = "Hello";
+char firstChar = str[0]; // firstChar = 'H'
+
+str[0] = 'h'; // str = "hello"
+```
+
+Since this is how strings work in C, they are also a feature of C++. However, C++ provides a safer and more convenient alternative with the `std::string` class, which we looked at in the previous chapter. It is generally easier to work with a `string` object then converting it to a character array when needed with the `c_str()` method.
+
+```cpp
+string s = "Hello";
+
+// Convert the string to a character array
+const char* str = s.c_str();
+```
