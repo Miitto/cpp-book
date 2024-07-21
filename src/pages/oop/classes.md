@@ -15,6 +15,50 @@ It is important that the difference between a class and an object is understood.
 Object-oriented programming (OOP) is a programming paradigm that uses objects and classes to design and build applications. OOP focuses on the concept of objects, and how they interact with each other to create complex systems.
 Objects have attributes (data) and methods (functions) that define their behavior. Classes are used to define the structure and behavior of objects. Inheritance, encapsulation, and polymorphism are key concepts in OOP, and will be covered in more detail in later lessons.
 
+## Defining a Class
+
+In C++, a class is defined using the `class` keyword followed by the class name. The class definition is enclosed in curly braces `{}`. Here is an example of a simple class definition:
+
+```cpp
+class Person {};
+```
+
+In this example, we have defined a class named `Person`. It does not have any attributes or methods yet, so lets add some
+
+## Members
+
+### Attributes
+
+Attributes are the data members of a class. They represent the state of an object. Attributes are also known as fields, properties, or instance variables. Attributes are defined within the class definition, but not initialized.
+We will add a name and an age attribute to the `Person` class:
+
+```cpp
+class Person {
+    string name; // [!code focus:2]
+    int age;
+};
+```
+
+In this example, the `Person` class has two members: `name` and `age`. `name` is a string attribute, and `age` is an integer attribute. These attributes represent the state of an individual `Person` object.
+
+### Methods
+
+Methods are the member functions of a class. They define the behavior of an object. Methods are also known as functions or member functions. Methods are defined within the class definition. We will add a method to print the name and age of a `Person` object:
+
+```cpp
+class Person {
+    string name;
+    int age;
+    // [!code focus:5]
+    void printInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+```
+
+The `printInfo` method is like the `size` method of a vector, and can be called on a `Person` object to print the name and age of the object. However we could not call it on a `Person` object yet as all the members are currently **private**.
+
 ## Access Modifiers
 
 Access modifiers are keywords that define the visibility of class members (attributes and methods). There are three access modifiers in C++:
@@ -23,80 +67,69 @@ Access modifiers are keywords that define the visibility of class members (attri
 -   `protected`: Members are accessible from derived classes. (We will cover inheritance in a later lesson)
 -   `private`: Members are only accessible from within the class.
 
-## Defining a Class
-
-In C++, a class is defined using the `class` keyword followed by the class name. The class definition is enclosed in curly braces `{}`. Here is an example of a simple class definition:
+By default, the access modifier for class members is `private`. We will change the access modifier for the `printInfo` method to `public` so that it can be accessed from outside the class:
 
 ```cpp
 class Person {
-private:
-    std::string name;
-
-public:
+    string name;
     int age;
-};
-```
-
-In this example, the `Person` class has two members: a private `name` attribute and a public `age` attribute. The `name` attribute is private, meaning it can only be accessed from within the `Person` class. The `age` attribute is public, meaning it can be accessed from outside the class. This will be more clear when we create objects of the `Person` class.
-
-## `this` Keyword
-
-While working with classes, you may encounter situations where the names of the class attributes and the parameters of a method are the same. In such cases, you can use the `this` keyword to refer to the class attributes. The `this` keyword is a pointer that points to the current object. Here is an example of using the `this` keyword:
-
-```cpp
-class Person {
-private:
-    std::string name;
-
-public:
-    // Constructor
-    Person(std::string name) {
-        // Use the `this` keyword to refer to the class attribute
-        this.name = name;
+// [!code focus:8]
+/* The `public` label is the access modifier.
+It will apply to any members below it, until another access modifier is encountered. */
+public: // [!code ++]
+    void printInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
     }
 };
 ```
 
+We can now use the `printInfo` method to print the name and age of a `Person` object. But how do we get a `Person` object?
+
 ## Creating Objects
 
-To create an object of a class, you need a constructor. A constructor is a special member function that is called when an object is created. Constructors are used to initialize the object's attributes. If you do not define a constructor, C++ will provide a default constructor that initializes the object's attributes to default values.
+To create an object of a class, you need a constructor. A constructor is a special method that is called when an object is created. Constructors are used to initialize the object's attributes. If you do not define a constructor, C++ will provide a default constructor that initializes the object's attributes to default values.
 
-> ℹ️
-> Remember to still include the `iostream` and `string` header files to use the `std::cout` object. This is not shown in the examples below for brevity.
+The constructor has the same name as the class and no return type. Once created, we can access members of the object using the `.` operator. Remember, we use `::` to access members of a namespace and `.` to access members of an object.
 
-The constructor has the same name as the class and no return type. Here is an example of a constructor for the `Person` class:
+If we want to be able to use a constructor outside of the class, we need to make it public. There are uses for private constructors, but they are more advanced and will be covered in a later lesson.
+
+Here is an example of a constructor for the `Person` class:
 
 ```cpp
 class Person {
-private:
-    std::string name;
-
-public:
+    string name;
     int age;
 
-    // Constructor
-    Person(std::string n, int a) {
-        // since the parameter name is the same as the attribute name, we use the `this` keyword to refer to the attribute
+public:
+    void printInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+    // [!code focus:8]
+    Person(string n, int a) {
         name = n;
         age = a;
 
         // We will print a message to the console when a Person object is created for demonstration purposes
-        std::cout << "Created: " << n << std::endl;
+        cout << "Created: " << n << endl;
     }
 };
 ```
 
-Now we can create objects of the `Person` class using the constructor:
+Now we can create objects of the `Person` class using the constructor. Since a class is a user-defined type, we can use the class name as the type of the variable.
 
 ```cpp
 int main() {
     // Create objects of the Person class
     Person person1("Alice", 30); // On the stack
-    Person person2 = new Person("Bob", 25); // On the heap
 
-    // Access the attributes of the objects
-    std::cout << person1.age << std::endl; // Output: 30
-    std::cout << person2.age << std::endl; // Output: 25
+    // Since the `new` keyword returns a pointer, we must use a pointer to store the object: `Person*`
+    Person* person2 = new Person("Bob", 25); // On the heap
+
+    // Now that we have created the objects, we can access their public attributes and methods
+    person1.printInfo();
+    (*person2).printInfo(); // We need to dereference the pointer to access the object's members
 
     delete person2; // Free the memory allocated for the Person object
 
@@ -104,181 +137,188 @@ int main() {
 }
 ```
 
-We can access the attributes of the objects using the dot `.` operator. We can access the `age` attribute because it is public, but we cannot access the `name` attribute because it is private.
+## -> Operator
 
-So how can we access the `name` attribute? We can define a public method in the `Person` class that returns the `name` attribute:
-
-```cpp
-class Person {
-private:
-    std::string name;
-
-public:
-    int age;
-
-    // Constructor
-    Person(std::string n, int a) {
-        name = n;
-        age = a;
-    }
-
-    // Public method to access the name attribute
-    std::string getName() {
-        return name;
-    }
-};
-```
-
-Now we can access the `name` attribute using the `getName` method:
+We can use the `->` operator to access an object's members through a pointer. The `->` operator combines the dereference operator `*` and the member access operator `.` into a single operator. For instance, we can modify our code to use the `->` operator:
 
 ```cpp
 int main() {
     // Create objects of the Person class
-    Person person1("Alice", 30);
-    Person person2("Bob", 25);
+    Person person1("Alice", 30); // On the stack
 
-    // Access the attributes of the objects
-    std::cout << person1.getName() << std::endl; // Output: Alice
-    std::cout << person2.getName() << std::endl; // Output: Bob
+    // Since the `new` keyword returns a pointer, we must use a pointer to store the object: `Person*`
+    Person* person2 = new Person("Bob", 25); // On the heap
+
+    // Now that we have created the objects, we can access their public attributes and methods
+    person1.printInfo();
+    // [!code focus:3]
+    (*person2).printInfo(); // [!code --]
+    person2->printInfo();  // [!code ++]
+
+    delete person2; // Free the memory allocated for the Person object
 
     return 0;
 }
 ```
 
-This is an example of a getter method, which is a common pattern in OOP. Getter methods are used to access private attributes of a class. You can also define setter methods to modify the attributes of a class. This allows for you to allow access to a variable, but control how it is accessed. For instance, if you make age private, you could add a getter method and have a setter method that only allows the `age` attribute to be set to a value between 0 and 120. Since we have not included a setter method for `name`, it is not possible to change the `name` attribute of a `Person` object once it is created.
+## `this` Keyword
 
-## Static Members
-
-A static member is a class member that belongs to the class itself, rather than to individual objects of the class. Static members are shared among all objects of the class. You can access static members using the class name followed by the scope resolution operator `::`. in the implementation below, we use a static method to create a `Person` object from user input.
-
-## Implementation
-
-We have covered enough to refactor our existing code to use a vector of people, instead of just names
+While working with classes, you may encounter situations where the names of the class attributes and the parameters of a method are the same. In such cases, you can use the `this` keyword to refer to the class attributes. For example, if we want to use `name` as a parameter in the constructor, we can use the `this` keyword to refer to the class attribute to set its value:
 
 ```cpp
-#include <iostream>
-#include <string>
-#include <vector>
-
 class Person {
-private:
-    std::string name;
-    int age;
+    string name; // [!code focus]
 
 public:
-    /* Static method to create a Person object
-    returns true if a person was created, false if the user exits
-    takes a reference to a pointer to a Person object, so that the object can be created and returned without copying
-    */
-    static bool createPerson(Person*& p) {
-        std::string name = "";
-        int age = -1;
-        while (true) {
-            std::cout << "Enter 'exit' to quit." << std::endl;
-            std::string first = inputName();
-            if (first == "exit") {
-                break;
-            }
-            std::string last = inputName();
-            if (last == "undo") {
-                continue;
-            }
-            if (last == "exit") {
-                break;
-            }
-
-            name = first + " " + last;
-
-            age = inputAge();
-        }
-
-        // If the name is empty or the age is -1, return false, as the user has exited
-        if (name.empty() || age == -1) {
-            return false;
-        }
-
-        // Create a new Person object and assign it to the pointer
-        p = new Person(name, age);
-        return true;
-    }
-
-    // Public constructor, if the name and age is already known
-    Person(std::string n, int a) {
-        name = n;
-        age = a;
-    }
-
-    // Static methods for user input
-    static std::string inputName() {
-        std::string n = "";
-        while (n.empty()) {
-            std::cout << "Enter a name: ";
-            std::cin >> n;
-        }
-        return n;
-    }
-
-    static int inputAge() {
-        int a;
-        while (true) {
-            std::cout << "Enter an age, or -1 to exit: ";
-            std::cin >> a;
-            if (a == -1) {
-                break;
-            }
-            // Although we have direct access to age, we will use the setter method since it has validation
-            if (setAge(a)) {
-                break;
-            }
-            std::cout << "Invalid age. Please enter an age between 0 and 120, or -1 to exit." << std::endl;
-        }
-        return a;
-    }
-
-    // Setters and Getters
-    std::string getName() {
-        return name;
-    }
-
-    int getAge() {
-        return age;
-    }
-
-    // We will return a boolean to indicate if the age was set successfully, or if an invalid age was provided
-    bool setAge(int a) {
-        if (a >= 0 && a <= 120) {
-            age = a;
-            return true;
-        }
-        return false;
+    // Calling the parameter `name` would shadow the class attribute `name` // [!code focus:5]
+    Person(string name) {
+        // So we use this to refer to the class attribute
+        this->name = name;
     }
 };
 ```
 
-This implementation allows for the creation of a `Person` object using the `createPerson` method. The `createPerson` method will prompt the user for a name and age, and create a `Person` object with the provided values. The `createPerson` method returns a boolean value to indicate if a `Person` object was created successfully. If the user enters "exit" at any time, the `createPerson` method will return false, and the `Person` object will not be created.
+`this` is a pointer to the current object, so you use the `->` operator to access the object's members. Since `this` is a pointer, objects can destroy themselves using the `delete this` statement, but this is not recommended as it can lead to undefined behavior.
 
-We can now use this class to create a vector of `Person` objects:
+`this` is an rvalue, so you cannot modify it, only modify members of the object it points to. You can also use `this` to return a reference to the current object, which can be useful for method chaining.
+
+## Getters and Setters
+
+Now what if we want to be able to change name and age? We could make the attributes public, which would allow us to change them directly. But then
+suppose we want to ensure that `age` is always between 18 and 120. We could add a check in the constructor, and throw an error when creating the object. We will throw an `invalid_argument` exception if the age is invalid, which is from the `stdexcept` header file.
 
 ```cpp
-int main() {
-    std::vector<Person*> people;
-    while (true) {
-        Person* p = nullptr;
-        if (!Person::createPerson(p)) {
-            break;
+class Person {
+public:
+    string name;
+    int age;
+
+    void printInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+    // [!code focus:8]
+    Person(string n, int a) {
+        name = n;
+        if (a < 18 || a > 120) { // [!code highlight:3]
+            throw invalid_argument("Invalid age"); // Since we cannot return a value from a constructor, we must throw an error if the age is invalid.
         }
-        people.push_back(p);
+        age = a;
     }
+};
 
-    for (const auto& person : people) {
-        std::cout << person->getName() << " is " << person->getAge() << " years old." << std::endl;
-    }
-
-    // Free the memory allocated for the Person objects
-    for (const auto& person : people) {
-        delete person;
+int main() {
+    try {
+        Person person1("Alice", 30);
+        Person person2("Bob", 15); // This will throw an error
+    } catch (invalid_argument& e) {
+        cout << e.what() << endl;
     }
 
     return 0;
 }
 ```
+
+This works at first glance, but consider the following code:
+
+```cpp
+Person person1("Alice", 30);
+person1.age = 15;
+```
+
+This code will compile and run, but it will not throw an error. This is because the `age` attribute is public, and can be changed directly without any further checks.
+
+### Setters
+
+To prevent this, we can use setter methods to modify the attributes of a class. Setter methods are used to set the values of private attributes. We will add a setter method for the `age` attribute that checks if the provided age is valid:
+
+```cpp
+class Person {
+    int age;
+
+public:
+    string name;
+
+    void printInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+
+    Person(string n, int a) {
+        name = n;
+        /* Since this method is inside of the class, we could simply use `age = a;` here, // [!code focus:3]
+        but that would require us to duplicate the check in the setter method. */
+        if (!setAge(a)) {
+            throw invalid_argument("Invalid age");
+        }
+    }
+    // [!code focus:8]
+    bool setAge(int a) {
+        if (a < 18 || a > 120) {
+            return false;
+        }
+        age = a;
+        return true;
+    }
+};
+```
+
+Now we can use the `setAge` method to change the `age` attribute, and it will return `false` if the provided age is invalid. Returning a `bool` is more common than throwing an error, as it can be handled more easily.:
+
+```cpp
+int main() {
+    Person person1("Alice", 30); // [!code focus:4]
+    if (!person1.setAge(15)) { // This will return false, as age is below 18. The age will not be changed.
+        cout << "Invalid age" << endl; // Since the setter returns false, we can print an error message
+    }
+
+    person1.printInfo(); // This will print the original age of 30 // [!code focus]
+
+    return 0;
+}
+```
+
+### Getters
+
+What if we want to get the age itself? We could make the `age` attribute public again, but then we would lose the ability to enforce age limits. Instead, we can add a getter method to return the value of the `age` attribute:
+
+```cpp
+class Person {
+    int age;
+
+public:
+    string name;
+
+    void printInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+
+    Person(string n, int a) {
+        name = n;
+        if (!setAge(a)) {
+            throw invalid_argument("Invalid age");
+        }
+    }
+    bool setAge(int a) {
+        if (a < 18 || a > 120) {
+            return false;
+        }
+        age = a;
+        return true;
+    }
+// [!code focus:4]
+    int getAge() {
+        return age;
+    }
+};
+
+int main() {
+    Person person1("Alice", 30);
+    cout << "Age: " << person1.getAge() << endl; // [!code focus]
+
+    return 0;
+}
+```
+
+Since this returns a copy of age, there is no risk of the age being changed outside of the class.
