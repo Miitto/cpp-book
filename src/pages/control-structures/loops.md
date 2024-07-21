@@ -181,9 +181,6 @@ do {
 We could to the same thing as the first example with a `do-while` loop:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int main() {
     std::string first = "";
     do {

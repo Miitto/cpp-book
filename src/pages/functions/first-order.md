@@ -5,9 +5,6 @@ In C++, functions are first-class citizens, which means they can be passed as ar
 Here is an example of a function that takes another function as an argument:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int add(int a, int b) {
     return a + b;
 }

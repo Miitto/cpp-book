@@ -70,9 +70,6 @@ if (condition) {
 Here is an example of using the `if-else` statement to check if a number is positive or negative:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int main() {
     int number = -5;
 
@@ -104,9 +101,6 @@ if (condition1) {
 Here is an example of using the `if-else if-else` statement to check if a number is positive, negative, or zero:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int main() {
     int number = 0;
 
@@ -143,9 +137,6 @@ switch (expression) {
 Here is an example of using the `switch` statement to check the day of the week:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int main() {
     int day = 3;
 
@@ -188,9 +179,6 @@ The `default` case is optional and is executed if none of the case values match 
 In C++, the `break` statement is used to exit the switch statement. If the `break` statement is omitted, the code will "fall through" to the next case. This can be useful if you want to execute the same code for multiple cases. Here is an example of using fall-through in a switch statement:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 enum Day {
     MONDAY,
     TUESDAY,

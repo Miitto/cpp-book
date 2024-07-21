@@ -9,9 +9,6 @@ Function overloading allows you to define multiple functions with the same name 
 Here is an example of function overloading:
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int add(int a, int b) {
     return a + b;
 }
