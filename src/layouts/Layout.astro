@@ -1,4 +1,5 @@
 ---
+import "@styles/code.scss";
 import { getNeighbors, urlBase } from "src/site";
 interface Props {
     title: string;
@@ -110,7 +111,10 @@ const neighbors = getNeighbors(url.pathname);
         max-width: fit-content;
     }
 </style>
-<style is:global>
+<style is:global lang="scss">
+    * {
+        box-sizing: border-box;
+    }
     :root {
         --accent: 136, 58, 234;
         --accent-light: 224, 204, 250;
@@ -124,10 +128,8 @@ const neighbors = getNeighbors(url.pathname);
 
         --button: 19, 21, 26;
         --button-hover: 30, 32, 40;
-    }
 
-    @media (prefers-color-scheme: dark) {
-        :root {
+        @media (prefers-color-scheme: dark) {
             --button: 30, 32, 40;
             --button-hover: 19, 21, 26;
         }
@@ -175,94 +177,36 @@ const neighbors = getNeighbors(url.pathname);
 
     ol {
         counter-reset: item;
-    }
+        li {
+            display: block;
 
-    ol li {
-        display: block;
-    }
-
-    ol li:before {
-        content: counters(item, ".") " ";
-        counter-increment: item;
+            &::before {
+                content: counter(item) ". ";
+                counter-increment: item;
+                color: rgb(var(--accent));
+            }
+        }
     }
 
     a {
         color: rgb(var(--accent));
         text-decoration: none;
-    }
 
-    a:visited {
-        color: rgb(var(--accent-dark));
-    }
+        &:visited {
+            color: rgb(var(--accent-dark));
 
-    @media (prefers-color-scheme: dark) {
-        a:visited {
-            color: rgb(var(--accent-light));
+            @media (prefers-color-scheme: dark) {
+                color: rgb(var(--accent-light));
+            }
         }
     }
 
-    code:not(pre code) {
-        background-color: #e6e5e5;
-        padding: 0.2rem 0.3rem;
-        border-radius: 3px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        code:not(pre code) {
-            background-color: #22232b;
-        }
-    }
-
-    pre {
-        padding: 0.5rem 0.75rem;
-    }
     html {
         font-family: system-ui, sans-serif;
         background-color: #fcfcfc;
         color: black;
-    }
 
-    .code-extra {
-        position: relative;
-    }
-
-    .code-extra > button {
-        opacity: 0;
-    }
-
-    .code-extra:hover > button {
-        opacity: 1;
-    }
-
-    .copy-button {
-        padding: 0.25rem;
-        padding-right: 0.2rem;
-        width: fit-content;
-        height: fit-content;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        transition: opacity 0.2s;
-        background-color: rgb(19, 21, 26);
-        border-radius: 7px;
-        border: none;
-        box-shadow:
-            2px 2px 3px black,
-            -2px -2px 3px #4e4e4e;
-    }
-
-    .copy-button:hover {
-        background-color: rgb(30, 32, 40);
-    }
-
-    .copy-button:active {
-        box-shadow:
-            2px 2px 3px black inset,
-            -2px -2px 3px #4e4e4e inset;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        html {
+        @media (prefers-color-scheme: dark) {
             background: #13151a;
             color: white;
         }
@@ -272,17 +216,5 @@ const neighbors = getNeighbors(url.pathname);
         border-left: 4px solid rgb(var(--accent));
         padding-left: 1.5rem;
         margin-inline: 0;
-    }
-
-    code {
-        font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
     }
 </style>

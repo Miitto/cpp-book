@@ -12,11 +12,13 @@
   "dependencies": {
     "@astrojs/check": "^0.8.1",
     "@astrojs/mdx": "^3.1.2",
+    "@shikijs/transformers": "^1.10.3",
     "astro": "^4.11.5",
     "remark-code-extra": "^1.0.1",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8"
   }
 }
