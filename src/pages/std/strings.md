@@ -5,6 +5,7 @@ title: Strings
 # Strings
 
 [String Reference](https://en.cppreference.com/w/cpp/string/basic_string)
+
 [String Stream Reference](https://en.cppreference.com/w/cpp/header/sstream)
 
 ## Introduction
@@ -13,13 +14,26 @@ A string is a sequence of characters. In C a string is an array of `char` termin
 In C++, while you can still use C-style strings, the standard library provides a safer and more convenient alternative with the `string` class. The `string` class is part of the `std` namespace and is defined in the `string` header file.
 `string` objects are more flexible and easier to use than C-style strings, as they automatically manage memory and provide a wide range of useful methods for manipulating strings.
 
-```cpp
-#include <iostream>
-#include <string>
+To use the `string` class, you need to include the `string` header file:
 
+```cpp
+#include <string>
+```
+
+You can then also use the namespace
+
+```cpp
+using std::string;
+```
+
+## Declaring and Initializing Strings
+
+You can declare a `string` object by specifying the type `string` as the variable type. You can then initialize the `string` object with a string literal or another `string` object. Here is an example of declaring and initializing a `string` object with a string literal:
+
+```cpp
 int main() {
-    std::string s = "Hello, world!";
-    std::cout << s << std::endl;
+    string s = "Hello, world!";
+    cout << s << endl;
     return 0;
 }
 ```
