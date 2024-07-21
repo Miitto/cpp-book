@@ -8,64 +8,64 @@ title: Variables
 
 A variable is a named storage location in memory that holds a value. Variables are used to store data that can be manipulated and accessed by a program. In C++, variables must be declared before they can be used. The declaration of a variable specifies its type and name, and optionally, an initial value.
 
-## Declaring Variables
+## Definition
 
-In C++, variables are declared by specifying the type of the variable followed by the variable name. By convention, the variable name should start lowercase, and then any subsequent words should be capitalized. This is called the **Declaration** of a variable.
-The syntax for declaring a variable is as follows:
+Variables can be defined by specifying the type of the variable, followed by the variable name.
 
 ```cpp
 type variableName;
 ```
 
-For example, to declare an integer variable named `x`, you would write:
+For example, to define an integer variable named `x`, you would write:
 
 ```cpp
 int x;
 ```
 
-You can also declare multiple variables of the same type on the same line by separating the variable names with commas. For example:
-
-```cpp
-int a, b, c;
-```
-
-> ℹ️
-> There are many different conventions to name variables. The most important thing is to be consistent with the naming convention you choose. In C++ the convention is to use `camelCase` for variable names, PascalCase for class names, and `UPPER_CASE` for constants. Some languages, such as Python, use `snake_case` for variables. Below is a table of naming conventions.
-
-| Name       | Example       | Explanation                                        |
-| ---------- | ------------- | -------------------------------------------------- |
-| camelCase  | `myVariable`  | Start lowercase, then capitalize subsequent words. |
-| PascalCase | `MyClass`     | Start uppercase, then capitalize subsequent words. |
-| UPPER_CASE | `MY_CONSTANT` | All uppercase with underscores separating words.   |
-| snake_case | `my_variable` | All lowercase with underscores separating words.   |
-
-## Defining Variables
-
-Variables can be initialized when they are declared by providing an initial value after the variable name. This is called the **Definition** of a variable.
-The syntax for initializing a variable is as follows:
+You can also provide an initial value for the variable, this is called **initialization**.
 
 ```cpp
 type variableName = value;
 ```
 
-For example, to declare and define an integer variable named `x` with the value `5`, you would write:
+ts
+For example, define an integer variable named `x` with the initial value `5`, you would write:
 
 ```cpp
 int x = 5;
 ```
 
-## Declaration vs Definition
+## Declaration
 
-In C++, the declaration of a variable is when you specify the type and name of the variable, but do not provide an initial value. The definition is when you give the variable its initial value.
+By default, any none constant variable that is defined in global scope (covered in [scope](#scope-of-variables) below) will be assessable from any file in the program. However the compiler will not know if you with to use that variable. To tell the compiler that you wish to use a variable that is defined in another file, you must **declare** the variable. This is done by using the `extern` keyword. For example, if you have a variable `x` defined in a file `file1.cpp` and you wish to use it in a file `file2.cpp`, you would declare the variable in `file2.cpp` as follows:
+
+```cpp
+extern int x;
+```
+
+This tells the compiler that the variable `x` is defined in another file and that it should be linked to that file at compile time. Any modifications to the variable `x` in `file2.cpp` will be reflected in `file1.cpp` as well.
+
+`extern` works slightly differently for constants, this difference is covered in the [constants](#constants) section below.
+
+## Declaration vs Definition vs Initialization
+
+Declaring a variable tells the compiler what name and type a variable has. Defining a variable allocates memory for the variable. Initializing a variable assigns it its first value. It is an error to **define** a variable more than once, but you can **declare** a variable as many times as you like.
+
+> ℹ️
+> There are many different conventions to name variables. The most important thing is to be consistent with the naming convention you choose. In C++ the convention is to use `camelCase` for variable names, PascalCase for class names, and `UPPER_CASE` for constants. Some languages, such as Python, use `snake_case` for variables. Below is a table of naming conventions.
+>
+> | Name       | Example       | Explanation                                        |
+> | ---------- | ------------- | -------------------------------------------------- |
+> | camelCase  | `myVariable`  | Start lowercase, then capitalize subsequent words. |
+> | PascalCase | `MyClass`     | Start uppercase, then capitalize subsequent words. |
+> | UPPER_CASE | `MY_CONSTANT` | All uppercase with underscores separating words.   |
+> | snake_case | `my_variable` | All lowercase with underscores separating words.   |
 
 ## Scope of Variables
 
 The scope of a variable refers to the region of the program where the variable is accessible. A scope is usually defined by a pair of curly braces `{}`. Variables declared inside a pair of curly braces are local to that block and cannot be accessed outside of it. Variables declared outside of any block are global variables and can be accessed from anywhere in the program.
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 int globalVariable = 10; // Global variable
 
 int main() {
@@ -103,3 +103,22 @@ const double PI = 3.14159;
 ```
 
 Constants are useful for defining values that should not be changed throughout the program, such as mathematical constants or configuration settings.
+
+By default constants are only accessible in the file they are defined in. To make a constant accessible in other files, you must use the `extern` keyword. This is done in the same way as declaring a variable, but with the `const` keyword before the type.
+
+```cpp file1.cpp
+// Since this is where it is initialized, this is also where it is defined.
+extern const double PI = 3.14159;
+```
+
+```cpp file2.cpp
+// We can now use PI in this file as with other extern variables. Remember the `const` keyword.
+extern const double PI;
+
+int main() {
+    cout << "The value of PI is: " << PI << endl;
+    return 0;
+}
+```
+
+Splitting code across multiple files is covered in the [splitting code](../../files/splitting/) section.
