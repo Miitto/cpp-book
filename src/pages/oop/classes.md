@@ -64,10 +64,16 @@ The `printInfo` method is like the `size` method of a vector, and can be called 
 Access modifiers are keywords that define the visibility of class members (attributes and methods). There are three access modifiers in C++:
 
 -   `public`: Members are accessible from outside the class.
--   `protected`: Members are accessible from derived classes. (We will cover inheritance in a later lesson)
+-   `protected`: Members are accessible from derived classes. (We will cover inheritance in a later lesson, for now it will work the same as `private`)
 -   `private`: Members are only accessible from within the class.
 
-By default, the access modifier for class members is `private`. We will change the access modifier for the `printInfo` method to `public` so that it can be accessed from outside the class:
+By default, the access modifier for class members is `private`. This means that if we attempt to use the `printInfo` method, we will get a compiler error.
+
+```cpp
+    person1.printInfo(); // Error: 'void Person::printInfo()' is inaccessible // [!code error]
+```
+
+We will change the access modifier for the `printInfo` method to `public` so that it can be accessed from outside the class:
 
 ```cpp
 class Person {
@@ -84,7 +90,13 @@ public: // [!code ++]
 };
 ```
 
-We can now use the `printInfo` method to print the name and age of a `Person` object. But how do we get a `Person` object?
+We can now use the `printInfo` method to print the name and age of a `Person` object.
+
+```cpp
+    person1.printInfo(); // OK: printInfo is now public
+```
+
+But how do we get a `Person` object?
 
 ## Creating Objects
 
@@ -136,6 +148,29 @@ int main() {
     return 0;
 }
 ```
+
+### Initializer List
+
+You can also initialize the attributes of a class in the constructor using an initializer list. This is a more concise way to initialize the attributes of a class. Here is an example of using an initializer list to initialize the attributes of the `Person` class:
+
+```cpp
+class Person {
+    string name;
+    int age;
+
+public:
+
+    Person(string name, int a) : name(name), age(a) {}
+};
+```
+
+This is equivalent to the previous constructor definition, but is more concise. The `:` is used to initialize the attributes of the object. This is known as an initializer list. An initializer list can be used to initialize members that can not be initialized in the constructor body, such as `const` members or reference members. The syntax is:
+
+```cpp
+ConstructorName(parameters) : member1(value1), member2(value2), ... {}
+```
+
+Also shown is that you do not need to use the `this` keyword to refer to the class attributes if the parameter name is the same as the attribute name.
 
 ## -> Operator
 

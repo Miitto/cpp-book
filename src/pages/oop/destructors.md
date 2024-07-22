@@ -67,7 +67,9 @@ const int* Draw::getNumbers() {
 }
 ```
 
-We will now modify the `Person` class to include a `Draw` object. We will also modify the `printInfo` method to print out the lottery numbers that the user has drawn.
+We will now modify the `Person` class to include a `Draw` object. Having a different class as a member variable is a common practice in object-oriented programming, and is called **composition**. Composition is usually the preferred way to create relationships between classes, as it allows for better encapsulation and reusability.
+
+We will also modify the `printInfo` method to print out the lottery numbers that the user has drawn.
 
 ```cpp Draw.cpp Draw.h Person.cpp A:Person.h
 #pragma once

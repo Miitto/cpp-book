@@ -5,6 +5,7 @@ import {
     transformerNotationFocus,
     transformerNotationHighlight,
     transformerNotationWordHighlight,
+    transformerNotationErrorLevel,
 } from "@shikijs/transformers";
 
 import mdx from "@astrojs/mdx";
@@ -30,6 +31,7 @@ export default defineConfig({
                 transformerNotationFocus(),
                 transformerNotationHighlight(),
                 transformerNotationWordHighlight(),
+                transformerNotationErrorLevel(),
             ],
         },
         remarkPlugins: [

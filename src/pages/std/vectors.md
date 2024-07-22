@@ -159,9 +159,6 @@ This example will output `10 2 30 4 5`.
 You can add elements to the end of a vector using the `push_back` method. Here is an example:
 
 ```cpp
-#include <iostream>
-#include <vector>
-
 int main() {
     std::vector<int> v = {1, 2, 3, 4, 5};
     v.push_back(6);
@@ -181,7 +178,37 @@ This example will output `1 2 3 4 5 6`.
 You can remove elements from the end of a vector using the `pop_back` method. Here is an example:
 
 ```cpp
-#include <iostream>
-#include <vector>
+int main() {
+    std::vector<int> v = {1, 2, 3, 4, 5};
+    v.pop_back();
 
+    for (int i = 0; i < v.size(); i++) {
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
+    return 0;
+}
 ```
+
+This example will output `1 2 3 4`.
+
+## Appending a Vector to Another Vector
+
+```cpp
+int main() {
+    std::vector<int> v1 = {1, 2, 3};
+    std::vector<int> v2 = {4, 5, 6};
+
+    // Append v2 to v1
+    v1.insert(v1.end(), v2.begin(), v2.end());
+
+    // Print the elements of v1
+    for (int i = 0; i < v1.size(); i++) {
+        std::cout << v1[i] << " ";
+    }
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+This example will output `1 2 3 4 5 6`.

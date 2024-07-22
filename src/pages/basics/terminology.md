@@ -61,3 +61,19 @@ Can be found [here](../variables/#definition).
 Is giving a variable an initial value. For example, `int x = 5;` initializes the variable `x` with the value `5`. Initialization is a distinct operation from assignment in C++.
 
 Declaration vs Definition vs Initialization is [here](../variables/#declaration-vs-definition-vs-initialisation).
+
+## Mutability
+
+Mutability refers to whether an object's state can be modified after it is created. In C++, the `const` keyword is used to indicate that an object is immutable and cannot be modified. For example, `const int x = 5;` declares a constant integer `x` that cannot be changed.
+
+### Interior Mutability
+
+Interior mutability refers to the ability to modify the state of an object without reassigning the object itself. For example, `std::vector` provides a `push_back` method to add elements to the vector without reassigning the vector itself. Primitive types like `int` are not mutable, as they cannot be modified in place. This means that the only way to change the value of an `int` is through assignment.
+
+```cpp
+std::vector<int> vec = {1, 2, 3};
+vec.push_back(4); // Interior mutability
+
+int x = 5;
+x = 10; // Reassignment
+```
