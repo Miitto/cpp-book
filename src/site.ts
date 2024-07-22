@@ -181,10 +181,6 @@ const sitemap: Sitemap = [
                 base: "polymorphism",
             },
             {
-                name: "Interfaces",
-                base: "interfaces",
-            },
-            {
                 name: "Templates",
                 base: "templates",
             },

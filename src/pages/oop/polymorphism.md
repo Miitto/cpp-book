@@ -58,6 +58,8 @@ public:
 
 We have a few shapes here, all of which are derived from the `Shape` class. The `Shape` class has a virtual `draw` method that is overridden by the derived classes. The `Circle`, `Rectangle`, and `Square` classes all have their own `draw` methods that print out the name of the shape they represent. The `Rectangle` class also has an `area` method that calculates the area of the rectangle, which is inherited by the `Square` class, but not present in any other class.
 
+### Without polymorphism
+
 Now let's create a few shapes and draw them, to check if everything is working as expected:
 
 ```cpp
@@ -79,6 +81,8 @@ int main() {
 
 This is nothing new so far, but now lets use some polymorphism:
 
+### With polymorphism
+
 ```cpp
 int main() {
     std::vector<Shape*> shapes;
@@ -95,7 +99,17 @@ int main() {
 }
 ```
 
-Now this is more useful. Since all shapes are derived from the `Shape` class, they are bound to the contract of the `Shape` class. This means that we can treat them as `Shape` objects, and call the `draw` method on them, without knowing their specific types. This is the essence of polymorphism: the ability to treat objects of different classes as objects of a common base class. This enables you to write code that can work with objects of multiple classes without knowing their specific types. While they are treated as `Shape` objects, we cannot call the `area` method, as that is not part of the `Shape` class.
+This will output:
+
+```plaintext
+Drawing a circle
+Drawing a rectangle
+Drawing a square
+```
+
+Now this is more useful. Since all shapes are derived from the `Shape` class, they are bound to the contract of the `Shape` class. This means that we can treat them as `Shape` objects, and call the `draw` method on them, without knowing their specific types. Since we have overridden the virtual method in the derived classes, the derived classes version of the method is the one that is called. This is the essence of polymorphism: the ability to treat objects of different classes as objects of a common base class. This enables you to write code that can work with objects of multiple classes without knowing their specific types.
+
+While they are treated as `Shape` objects, we cannot call the `area` method, as that is not part of the `Shape` class.
 
 ## `dynamic_cast`
 
@@ -125,11 +139,15 @@ int main() {
 }
 ```
 
-While this is very useful, it is also usually a sign of bad design. If you find yourself needing to use `dynamic_cast`, you should probably rethink your design. In this case, it would be better to have the `area` method in the `Shape` class, which would be overridden by the derived classes. This would allow you to call the `area` method on any `Shape` object, without needing to know its specific type.
+While this is very useful, it is also usually a sign of bad design. If you find yourself needing to use `dynamic_cast`, you should probably rethink your design.
+
+## Better design
+
+In this case, it would be better to have the `area` method in the `Shape` class, which would be overridden by the derived classes. This would allow you to call the `area` method on any `Shape` object, without needing to know its specific type.
 
 We could also create a `ShapeArea` class that derives from `Shape`, which has the `area` method to be overridden by the derived classes. This would allow us to only use shapes that can have their area calculated as `ShapeArea` objects.
 
-### Adding the area method to the Shape class
+## Adding the area method to the Shape class
 
 ```cpp
 class Shape {
