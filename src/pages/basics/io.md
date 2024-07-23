@@ -6,11 +6,11 @@ title: Input Output
 
 ## Introduction
 
-Console input and output are the easiest methods to implement. Both console input `cin` and console output `cout` are part of the standard library `iostream`. The `iostream` library is included in the C++ standard library, so you don't need to install any additional libraries to use it.
+Console input and output are the easiest user interaction methods to implement. The standard library provides two objects for this purpose: `cin` and `cout`. `cin` is used to read input from the console, and `cout` is used to write output to the console. `cin` is used to take input from the console, and stands for _character input_. `cout` is used to output to the console, and stands for _character output_.
 
 ## Including the iostream header file
 
-To use `cin` (console in) and `cout` (console out), you need to include the `iostream` header file. Imports are located at the top of the file, and use the `#include` directive. When including a header file, you should use angle brackets `<>` for standard library headers, and double quotes `""` for user-defined headers. GCC has a more in depth explanation of the difference between the two [here](https://gcc.gnu.org/onlinedocs/cpp/Search-Path.html).
+To use `cin` and `cout`, you need to include the `iostream` header file. Imports are located at the top of the file, and use the `#include` directive. When including a header file, you should use angle brackets `<>` for standard library headers, and double quotes `""` for user-defined headers. GCC has a more in depth explanation of the difference between the two [here](https://gcc.gnu.org/onlinedocs/cpp/Search-Path.html).
 
 ```cpp
 #include <iostream> // include the iostream header file // [!code focus]
