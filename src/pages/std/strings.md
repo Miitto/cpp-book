@@ -77,7 +77,7 @@ int main() {
     if (s1 == s2) {
         std::cout << "The strings are equal" << std::endl;
     } else {
-        std::cout << "The strings are not equal" << std::endl;
+        std::cout << "The strings are not equal" << std::endl; // prints this
     }
     return 0;
 }
@@ -93,7 +93,7 @@ int main() {
     std::string s1 = "apple";
     std::string s2 = "banana";
     if (s1 < s2) {
-        std::cout << "apple comes before banana" << std::endl;
+        std::cout << "apple comes before banana" << std::endl; // prints this, since 'a' comes before 'b'
     } else {
         std::cout << "apple comes after banana" << std::endl;
     }
@@ -131,7 +131,7 @@ int main() {
     std::string s = "Hello, world!";
     size_t pos = s.find("world");
     if (pos != std::string::npos) {
-        std::cout << "Found at position " << pos << std::endl;
+        std::cout << "Found at position " << pos << std::endl; // prints "Found at position 7" since the 'w' of world is at index 7
     } else {
         std::cout << "Not found" << std::endl;
     }
@@ -157,7 +157,7 @@ int main() {
 }
 ```
 
-### Append and Pop
+### Push and Pop
 
 You can append a character to a string using the `push_back` method:
 
@@ -224,8 +224,8 @@ int main() {
   // std::istringstream behavior
   ss >> foo >> bar;
 
-  std::cout << "foo: " << foo << '\n';
-  std::cout << "bar: " << bar << '\n';
+  std::cout << "foo: " << foo << '\n'; // foo: 100
+  std::cout << "bar: " << bar << '\n'; // bar: 200
 
   return 0;
 }

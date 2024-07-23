@@ -14,7 +14,13 @@ const sitemap = getSitemap();
                     <ol>
                         {item.pages.map((child) => (
                             <li>
-                                <a href={child.link}>{child.name}</a>
+                                <a href={child.link}>
+                                    {child.name}{" "}
+                                    {child.name == "Index" &&
+                                    item.name == "Introduction"
+                                        ? " (this page)"
+                                        : ""}
+                                </a>
                             </li>
                         ))}
                     </ol>
