@@ -6,7 +6,18 @@ title: Functions
 
 ## Introduction
 
-Functions are used to extract a block of code into a separate unit that can be called from other parts of the program. Functions are useful for organizing code, making it easier to read and maintain. Functions can also be reused in multiple places in a program to reduce overhead when modifying logic.
+Functions are used to extract a block of code into a separate unit that can be called from other parts of the program. Functions are useful for organizing code, making it easier to read and maintain. Functions can also be reused in multiple places in a program to reduce overhead when modifying logic. A function can take in values (parameters) to use within it, and they can return a value back to the caller. For instance we could create a function called `add` that takes in two integer values (`int`) and returns the sum of the two values.
+
+## Calling a Function
+
+We could use the function we explained above by *calling* it. To do this, we use the function name with parenthesis `()` after it. We put any values we want to pass to the function within these parenthesis. For example to call the `add` function with the values `1` and `2`, we would write `add(1, 2)`. This expression will evaluate to the return value of the function, in this case it would be `3`. We will see how this function was created to result in this result in the next section, as the return value is dependant on the code within the function.
+
+We can store the value returned by the function in a variable using the assignment operator. A full example of calling this function and storing the value it returns is shown below
+
+```cpp
+int result = add(1, 2);
+cout << "Result is: " << result << endl; // Result is: 3
+```
 
 ## Creating a Function
 
