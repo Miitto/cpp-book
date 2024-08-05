@@ -129,6 +129,10 @@ const sitemap: Sitemap = [
         base: "functions",
         pages: [
             {
+                name: "Introduction to Functions",
+                base: "",
+            },
+            {
                 name: "Function Basics",
                 base: "basics",
             },

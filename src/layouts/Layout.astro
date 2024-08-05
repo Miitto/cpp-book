@@ -175,15 +175,25 @@ const neighbors = getNeighbors(url.pathname);
         }
     }
 
+    ol,
+    ul {
+        p {
+            display: block;
+        }
+    }
+
     ol {
         counter-reset: item;
-        li {
+        li:not(ul > li) {
             display: block;
+            position: relative;
 
             &::before {
                 content: counter(item) ". ";
                 counter-increment: item;
                 color: rgb(var(--accent));
+                position: absolute;
+                left: -1em;
             }
         }
     }
